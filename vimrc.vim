@@ -1,9 +1,3 @@
-" File: .vimrc
-" Author: Jake Zimmerman <jake@zimmerman.io>
-"
-" How I configure Vim :P
-"
-
 set nocompatible
 filetype off
 
@@ -36,12 +30,14 @@ set number
 set showcmd
 set incsearch
 set hlsearch
+set colorcolumn=80
 syntax on
 set tabstop=8
 set expandtab
 set softtabstop=4
 set shiftwidth=4
 let mapleader=","
+set spell
 hi clear SignColumn
 
 "Better window navigation
@@ -49,6 +45,16 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
+" Save with Ctrl+S
+noremap <silent> <C-S> :update<CR>
+vnoremap <silent> <C-S> <C-C>:update<CR>
+inoremap <silent> <C-S> <Esc>:update<CR>
+" Moving lines
+nnoremap <Leader>j :m+1<CR>
+nnoremap <Leader>k :m-2<CR>
+vnoremap <Leader>j :m+1<CR>gv
+vnoremap <Leader>k :m-2<CR>gv
+
 
 " Mappings to access buffers (don't use "\p" because a
 " delay before pressing "p" would accidentally paste).
