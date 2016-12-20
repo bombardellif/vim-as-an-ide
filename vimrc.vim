@@ -19,6 +19,8 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Raimondi/delimitMate'
+" --- Vim for Latex
+Plugin 'lervag/vimtex'
 
 call vundle#end()
 filetype plugin indent on
@@ -54,6 +56,8 @@ nnoremap <Leader>j :m+1<CR>
 nnoremap <Leader>k :m-2<CR>
 vnoremap <Leader>j :m+1<CR>gv
 vnoremap <Leader>k :m-2<CR>gv
+" Search command
+vnoremap // y/<C-R>"<CR>"
 
 
 " Mappings to access buffers (don't use "\p" because a
