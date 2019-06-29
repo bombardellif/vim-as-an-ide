@@ -1,28 +1,4 @@
 set nocompatible
-filetype off
-
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'tomasr/molokai'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'vim-syntastic/syntastic'
-" Plugin 'xolox/vim-misc'
-" Plugin 'xolox/vim-easytags'
-" Plugin 'majutsushi/tagbar'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'tpope/vim-fugitive'
-Plugin 'Raimondi/delimitMate'
-Plugin 'tpope/vim-surround'
-Plugin 'tomtom/tcomment_vim'
-
-call vundle#end()
 filetype plugin indent on
 
 " General Settings
@@ -82,18 +58,11 @@ nnoremap <Leader>0 :10b<CR>
 nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprevious<CR>
 
-" ----- Plugin-Specific Settings --------------------------------------
-
-" ----- altercation/vim-colors-solarized settings -----
-" Toggle this to light for light colorscheme
+set termguicolors
 set background=dark
-
-" Uncomment the next line if your terminal is not configured for solarized
-"let g:solarized_termcolors=256
-
 " Set the colorscheme
-colorscheme solarized
-
+colorscheme gruvbox
+" ----- Plugin-Specific Settings --------------------------------------
 " ----- bling/vim-airline settings -----
 " Always show statusbar
 set laststatus=2
@@ -112,13 +81,7 @@ let g:airline_detect_paste=1
 let g:airline#extensions#tabline#enabled = 1
 
 " Use the solarized theme for the Airline status bar
-let g:airline_theme='solarized'
-
-" ----- jistr/vim-nerdtree-tabs -----
-" Open/close NERDTree Tabs with \t
-nmap <silent> <leader>t :NERDTreeTabsToggle<CR>
-" To have NERDTree always open on startup
-let g:nerdtree_tabs_open_on_console_startup = 0
+let g:airline_theme='gruvbox'
 
 " ----- scrooloose/syntastic settings -----
 let g:syntastic_error_symbol = '✘'
@@ -128,35 +91,15 @@ augroup mySyntastic
   au FileType tex let b:syntastic_mode = "passive"
 augroup END
 
-" ----- xolox/vim-easytags settings -----
-" Where to look for tags files
-" set tags=./tags;,~/.vimtags
-" Sensible defaults
-" let g:easytags_events = ['BufReadPost', 'BufWritePost']
-" let g:easytags_async = 1
-" let g:easytags_dynamic_files = 2
-" let g:easytags_resolve_links = 1
-" let g:easytags_suppress_ctags_warning = 1
-
-" ----- majutsushi/tagbar settings -----
-" Open/close tagbar with \b
-" nmap <silent> <leader>b :TagbarToggle<CR>
-" Uncomment to open tagbar automatically whenever possible
-"autocmd BufEnter * nested :call tagbar#autoopen(0)
+" ----- ctrlpvim/ctrlp.vim -----
+let g:ctrlp_custom_ignore = {
+            \ 'file': '\v\.(jpg|so|jpeg|png|bmp|264|mp4)$',
+            \ 'dir': 'Data$'
+            \ }
 
 " ----- airblade/vim-gitgutter settings -----
 " In vim-airline, only display "hunks" if the diff is non-zero
 let g:airline#extensions#hunks#non_zero_only = 1
-
-" ----- Raimondi/delimitMate settings -----
-let delimitMate_expand_cr = 1
-augroup mydelimitMate
-  au!
-  au FileType markdown let b:delimitMate_nesting_quotes = ["`"]
-  au FileType tex let b:delimitMate_quotes = ""
-  au FileType tex let b:delimitMate_matchpairs = "(:),[:],{:},`:'"
-  au FileType python let b:delimitMate_nesting_quotes = ['"', "'"]
-augroup END"'"'"]"'"`
 
 " Delete buffer while keeping window layout (don't close buffer's windows).
 " Version 2008-11-18 from http://vim.wikia.com/wiki/VimTip165
